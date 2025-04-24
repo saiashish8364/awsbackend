@@ -30,6 +30,8 @@ jobs:
           touch .env
           echo "DATABASE=${{secrets.DATABASE}}" > .env
           echo "PORT=${{secrets.PORT}}" > .env
+      - name: Verify .env contents
+        run: cat .env
 
       # Step 5: Build the project (only if a build script is present in package.json)
       - run: npm run build --if-present
